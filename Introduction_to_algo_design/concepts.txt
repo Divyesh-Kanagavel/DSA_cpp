@@ -91,7 +91,89 @@ Soln. n^2/5 <= n^2/2 - n/2 <= n^2/2 , for n>=2, c1 = 1/5, c2 = 1/2, n0=2
 let us assume c1n^2 <= n <= c2n^2 for n>=n0
 divide by n throughout, assuming n > 0
 c1 * n <= 1 <= c2 * n, 
-n <= 1/c1 , for all n which does not satisfy this condition, the statement n = theta(n^2) does not hold true
+n <= 1/c1 , for all n which does not satisfy this condition, the statement n = theta(n^2) does not hold true.
+
+Usually for analysis, we care about the upper bound because we usually analyze the worst running time of the algorithm
+and lower bound for an algorithm is of little practical importance. In case when worst and best cases are of the same complexity,
+we use average running time.
+
+The upper bound or lower bound acts as an asymptote, a mathematical curve to which the worst case or best case runtime 
+is approximated to at higher values of n[the size of input].Hence, the name asymptotic analysis.
+
+Guidelines of asymptotic analysis:
+
+Loops : Running time of for loop is at most the running time of statements multiplied by the number of iterations.
+for (i=1;i<=n;i++)
+{
+    m = m+2; // constant time c
+}
+So, runtime =  c * n => O(n)
+
+Nested for loops:
+Analyze from the inside out. Total running time is the product of the
+sizes of all the loops.
+for (i=1;i<=n;i++)
+{
+    // inner loop executes n times.
+    for (j=1;j<=n;j++)
+    {
+        k=k+1; // constant time
+    }
+}
+
+Total time = c * n * n = c * n^2 = O(n^2)
+
+Consecutive statements : Add the time complexities of each of the individual statements.
+
+x = x + 1; // constant time
+for (i=1;i<=n;i++)
+{
+    m = m+2; //constant time
+}
+for (i=1;i<=n;i++)
+{
+    for (j=1;j<=n;j++)
+    {
+        n = n+1; // constant time 
+    }
+}
+
+time = c0 + c1 * n + c2 * n^2 = O(n^2)
+
+If-then else statements : Worst case running part : the test case + the bigger part of if or else.
+
+if (length() == 0)
+{
+    return false; // then part : constant
+}
+
+else{ // (constant + constant) * n
+    for(int n=0; n<length();n++)
+    {  // constant + constant
+       if (!list[n].equals(otherList.list[n]))
+           return false;
+    }
+}
+Worst case runtime : c0[test] + (c2+c3) * n [inside else] = O(n)
+
+Logarithmic complexity:
+an algorithm is O(n) if it takes a constant time to cut the problem size by fraction (usually by 1/2) .Consider the program:
+for(i=1;i<=n;)
+{
+   i = 2*i;
+}
+the value of i keeps increasing by multiples of 2 such as 1,2,4,8... Let us say at k th step, 2^k = n, at k+1, 
+the program comes out of the loop. taking logarithm on both sides,
+2^k = n
+log_2 (2^k) = log_2 (n)
+k = log_2 (n)
+Time = O(log_2(n))
+
+The same analysis holds for cases where i = i / 2, where i decrements by a fraction and it constant time to do so every iteration.
+
+
+
+
 
 
 
