@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+unsigned get_bits(unsigned x, int p , int n)
+{
+    return (x >> (p+1-n)) & ~(~0 << n);
+}
+unsigned set_bits(unsigned x, int p, int n, unsigned y)
+{
+    unsigned temp1 = (y & (~(~0 << n))) << (p+1-n);
+    unsigned temp2 = (~0 & (~(~0 << n))) << (p+1-n);
+    return ((x & ~temp2) | temp1);
+}
+int main(void)
+{
+    unsigned int x = 1043;
+    unsigned int y = 572;
+    int p = 4;
+    int n = 3;
+    printf("%u\n", set_bits(x,p,n,y));
+}
