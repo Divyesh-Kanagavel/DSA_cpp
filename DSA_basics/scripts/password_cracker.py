@@ -24,14 +24,6 @@ results = brute_force_tuples(2)
 print(time.time() - start)
 print(results)
 
-
-
-
-
-
-
-
-
 # the brute force is very inefficient because it has a time complexity of 
 # O(a^n) , where a is a constant like in this case a = 26. 
 # for every one element added, the time complexity is increased by a times.
