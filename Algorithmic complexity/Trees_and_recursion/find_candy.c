@@ -106,6 +106,34 @@ int is_stack_empty(stack* s)
     return s->highest_index == -1;
 }
 
+/* we use this stack data structure to store pending sub trees.
+if we see a non-house node, i.e node with two non-null children, we push
+one of the subtrees to stack and process the other subtree. if the node is a house,
+add candy to the total. if stack is empty, we are done*/
+int tree_candy(Node* tree)
+{
+    int total = 0;
+    stack* s = create_stack();
+    while(tree!=NULL)
+    {
+        if (tree->left && tree->right)
+        {
+            push_stack(s, tree->right);
+            tree = tree->left;
+        }
+        else{
+            total += tree->candy;
+            if (is_stack_empty(s))
+            {
+                tree = NULL;
+            }
+            else
+                tree = pop_stack(s);
+        }
+    }
+    return total;
+}
+
 int main()
 {
     /* Building a simple tree */
@@ -131,11 +159,8 @@ int main()
     push_stack(s, n1);
     push_stack(s,n2);
     push_stack(s,n3);
-    if (!is_stack_empty(s))
-    {
-        n = pop_stack(s);
-        printf("%d\n", n->candy);
-    }
+    printf("total = %d\n", tree_candy(C));
+
     return 0;
 
 }
