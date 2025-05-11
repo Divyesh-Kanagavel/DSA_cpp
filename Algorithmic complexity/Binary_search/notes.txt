@@ -1,0 +1,5 @@
+Binary search thrives in the following scenarios:
+1. Hard optimality, Easy feasibility
+   - hard to find the right solution directly, but easier to check if the candidate is
+   the right solution.
+2. there is a clear distinction between feasible and infeasible search space solutions.
