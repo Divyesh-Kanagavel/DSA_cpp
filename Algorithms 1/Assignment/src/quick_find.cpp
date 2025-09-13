@@ -1,5 +1,5 @@
 // union-find algorithm -> find if two components are connected, and if not connect two components
-
+// eager approach - connect as and when you the api is called.
 #include <iostream>
 #include <memory>
 
