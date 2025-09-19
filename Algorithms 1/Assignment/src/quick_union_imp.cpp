@@ -42,7 +42,7 @@ class UnionFind
             int root_q = find_root(q);
             return root_p == root_q;
         }
-        // O(N^2) -> there are N elements and a loop of N elements per element.
+
         void union_func(int p, int q)
         {
             int id_p = find_root(p);
