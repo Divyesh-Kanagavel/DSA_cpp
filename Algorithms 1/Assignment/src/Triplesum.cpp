@@ -110,7 +110,6 @@ int main()
 
 
     auto start = std::chrono::steady_clock::now();
-
     two_pointer(seq);
     auto end = std::chrono::steady_clock::now();
     std::chrono::duration<double, std::milli> duration = (end-start);

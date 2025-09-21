@@ -37,8 +37,7 @@ class StackArray
         }
 
         void push(T item)
-        {
-            
+        {          
             if (m_size == m_capacity)
             {
                 resize(m_capacity * 2);
